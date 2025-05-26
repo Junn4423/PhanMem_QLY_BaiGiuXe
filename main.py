@@ -2,7 +2,17 @@ import tkinter as tk
 import os
 import sys
 from components.login import show_login_dialog
+import cv2
+import logging
+# Tắt warning của FFmpeg/OpenCV
+os.environ['OPENCV_LOG_LEVEL'] = 'SILENT'
+os.environ['OPENCV_FFMPEG_CAPTURE_OPTIONS'] = 'rtsp_transport;udp'
+# Tắt warning của OpenCV
+cv2.setLogLevel(0)  # 0 = SILENT, 1 = FATAL, 2 = ERROR, 3 = WARNING, 4 = INFO, 5 = DEBUG
 
+# Tắt logging của FFmpeg
+logging.getLogger('libav').setLevel(logging.ERROR)
+logging.getLogger('h264').setLevel(logging.ERROR)
 goi_can_thiet = ['opencv-python', 'pillow', 'numpy', 'keyboard', 'requests', 'mysql-connector-python']
 
 def kiem_tra_va_cai_dat_goi():
@@ -49,9 +59,9 @@ if not os.path.exists("server/config/db_config.json"):
 """)
 
 from components.ui import GiaoDienQuanLyBaiXe
-from components.camera import QuanLyCamera
-from components.vehicle import QuanLyXe
-from components.card_reader import DauDocThe
+from components.QuanLyCamera import QuanLyCamera
+from components.QuanLyXe import QuanLyXe
+from components.DauDocThe import DauDocThe
 
 def main():
     if __name__ == "__main__":

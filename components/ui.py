@@ -93,12 +93,12 @@ class GiaoDienQuanLyBaiXe:
         khung_noi_dung.pack(fill=tk.BOTH, expand=True)
 
         # Left panel - THIẾT LẬP CHIỀU RỘNG CỐ ĐỊNH
-        bang_trai = tk.Frame(khung_noi_dung, bg="#f0f9ff", width=700)
+        bang_trai = tk.Frame(khung_noi_dung, bg="#f0f9ff", width=800)  # Tăng width từ 700 lên 800
         bang_trai.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 10))
         bang_trai.pack_propagate(False)  # QUAN TRỌNG: Ngăn thay đổi kích thước
 
         # Camera frames - THIẾT LẬP CHIỀU CAO CỐ ĐỊNH
-        khung_cameras = tk.Frame(bang_trai, bg="#f0f9ff", height=250)
+        khung_cameras = tk.Frame(bang_trai, bg="#f0f9ff", height=300)  # Tăng height từ 250 lên 300
         khung_cameras.pack(fill=tk.X, pady=(0, 10))
         khung_cameras.pack_propagate(False)  # QUAN TRỌNG
 
@@ -106,15 +106,15 @@ class GiaoDienQuanLyBaiXe:
         khung_camera_vao = tk.LabelFrame(
             khung_cameras, text="Camera Vào (...)", font=("Helvetica", 12, "bold"),
             bg="#f0f9ff", fg="#0369a1", padx=5, pady=5, relief=tk.GROOVE, bd=2,
-            width=340, height=240  # Kích thước cố định
+            width=450, height=330  # Tăng từ 400x280 lên 450x330
         )
         khung_camera_vao.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 5))
         khung_camera_vao.pack_propagate(False)  # QUAN TRỌNG
         
-        self.khung_hien_thi_camera_vao = tk.Label(khung_camera_vao, bg="black", width=320, height=240)
+        self.khung_hien_thi_camera_vao = tk.Label(khung_camera_vao, bg="black", width=430, height=310)  # Tăng từ 380x260 lên 430x310
         self.khung_hien_thi_camera_vao.pack(fill=tk.BOTH, expand=True, padx=0, pady=0)
         
-        anh_camera_vao = Image.new('RGB', (320, 240), color='#333333')
+        anh_camera_vao = Image.new('RGB', (430, 310), color='#333333')  # Tăng từ 380x260 lên 430x310
         self.anh_camera_vao = ImageTk.PhotoImage(anh_camera_vao)
         self.khung_hien_thi_camera_vao.config(image=self.anh_camera_vao)
         
@@ -127,15 +127,15 @@ class GiaoDienQuanLyBaiXe:
         khung_camera_ra = tk.LabelFrame(
             khung_cameras, text="Camera Ra (...)", font=("Helvetica", 12, "bold"),
             bg="#f0f9ff", fg="#0369a1", padx=5, pady=5, relief=tk.GROOVE, bd=2,
-            width=340, height=240  # Kích thước cố định
+            width=450, height=330  # Tăng từ 400x280 lên 450x330
         )
         khung_camera_ra.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=(5, 0))
         khung_camera_ra.pack_propagate(False)  # QUAN TRỌNG
         
-        self.khung_hien_thi_camera_ra = tk.Label(khung_camera_ra, bg="black", width=320, height=240)
+        self.khung_hien_thi_camera_ra = tk.Label(khung_camera_ra, bg="black", width=430, height=310)  # Tăng từ 380x260 lên 430x310
         self.khung_hien_thi_camera_ra.pack(fill=tk.BOTH, expand=True, padx=0, pady=0)
         
-        anh_camera_ra = Image.new('RGB', (320, 240), color='#333333')
+        anh_camera_ra = Image.new('RGB', (430, 310), color='#333333')  # Tăng từ 380x260 lên 430x310
         self.anh_camera_ra = ImageTk.PhotoImage(anh_camera_ra)
         self.khung_hien_thi_camera_ra.config(image=self.anh_camera_ra)
         
@@ -160,7 +160,7 @@ class GiaoDienQuanLyBaiXe:
             pady=5, 
             relief=tk.GROOVE,
             bd=2,
-            width=340, height=240  # Kích thước cố định
+            width=400, height=280  # Kích thước cố định
         )
         khung_anh_gan_day.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 5))
         khung_anh_gan_day.pack_propagate(False)  # QUAN TRỌNG
@@ -171,7 +171,6 @@ class GiaoDienQuanLyBaiXe:
         anh_trong = Image.new('RGB', (320, 240), color='#333333')
         self.anh_chup_gan_day = ImageTk.PhotoImage(anh_trong)
         self.khung_hien_thi_anh_gan_day.config(image=self.anh_chup_gan_day)
-        
         # Exit verify frame - THIẾT LẬP KÍCH THƯỚC CỐ ĐỊNH
         khung_xac_nhan_ra = tk.LabelFrame(
             khung_anh_chup, 
@@ -183,12 +182,12 @@ class GiaoDienQuanLyBaiXe:
             pady=5, 
             relief=tk.GROOVE,
             bd=2,
-            width=340, height=240  # Kích thước cố định
+            width=400, height=280  # Kích thước cố định
         )
         khung_xac_nhan_ra.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=(5, 0))
         khung_xac_nhan_ra.pack_propagate(False)  # QUAN TRỌNG
         
-        self.khung_hien_thi_xac_nhan_ra = tk.Label(khung_xac_nhan_ra, bg="black", width=320, height=240)
+        self.khung_hien_thi_xac_nhan_ra = tk.Label(khung_xac_nhan_ra, bg="black", width=380, height=260)
         self.khung_hien_thi_xac_nhan_ra.pack(fill=tk.BOTH, expand=True, padx=0, pady=0)
         
         self.anh_xac_nhan_ra = ImageTk.PhotoImage(anh_trong)
@@ -205,19 +204,26 @@ class GiaoDienQuanLyBaiXe:
             pady=5, 
             relief=tk.GROOVE,
             bd=2,
-            height=120  # Chiều cao cố định
+            height=120 
         )
         khung_bien_so.pack(fill=tk.X, pady=(0, 10))
         khung_bien_so.pack_propagate(False)  # QUAN TRỌNG
-        
-        self.khung_hien_thi_bien_so = tk.Label(khung_bien_so, bg="white", height=5)
-        self.khung_hien_thi_bien_so.pack(fill=tk.BOTH, expand=True, padx=0, pady=0)
+
+        self.khung_hien_thi_bien_so = tk.Label(
+            khung_bien_so, 
+            text="", 
+            font=("Helvetica", 16, "bold"),  # Tăng kích thước chữ để dễ đọc
+            bg="white", 
+            fg="#0369a1",  # Màu chữ xanh đậm
+            height=5,
+            anchor="center"  # Căn giữa văn bản
+        )
+        self.khung_hien_thi_bien_so.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
         
         # Right panel
         bang_phai = tk.Frame(khung_noi_dung, bg="#f0f9ff", width=400)
         bang_phai.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=(10, 0))
 
-        # Các phần còn lại trong tab_quan_ly giữ nguyên
         # Info frame
         khung_thong_tin = tk.LabelFrame(
             bang_phai, 
@@ -624,8 +630,7 @@ class GiaoDienQuanLyBaiXe:
         self.nut_xe_may_vao.config(bg="#10b981", relief=tk.SUNKEN)
         self.nhan_che_do.config(text="Chế độ: XE MÁY VÀO")
         self.xoa_thong_tin()
-        self.dau_doc_the.dang_quet = False  # RESET trạng thái quét thẻ!
-        self.quan_ly_xe.dat_che_do("vao", "xe_may")
+        self.dau_doc_the.dang_quet = False 
         self.quan_ly_camera.chuyen_doi_camera("vao")
     
     def dat_che_do_xe_may_ra(self):
@@ -636,8 +641,7 @@ class GiaoDienQuanLyBaiXe:
         self.nut_xe_may_ra.config(bg="#10b981", relief=tk.SUNKEN)
         self.nhan_che_do.config(text="Chế độ: XE MÁY RA")
         self.xoa_thong_tin()
-        self.dau_doc_the.dang_quet = False  # RESET trạng thái quét thẻ!
-        self.quan_ly_xe.dat_che_do("ra", "xe_may")
+        self.dau_doc_the.dang_quet = False  
         self.quan_ly_camera.chuyen_doi_camera("ra")
     
     def dat_che_do_oto_vao(self):
@@ -648,8 +652,7 @@ class GiaoDienQuanLyBaiXe:
         self.nut_oto_vao.config(bg="#10b981", relief=tk.SUNKEN)
         self.nhan_che_do.config(text="Chế độ: XE HƠI VÀO")
         self.xoa_thong_tin()
-        self.dau_doc_the.dang_quet = False  # RESET trạng thái quét thẻ!
-        self.quan_ly_xe.dat_che_do("vao", "oto")
+        self.dau_doc_the.dang_quet = False 
         self.quan_ly_camera.chuyen_doi_camera("vao")
     
     def dat_che_do_oto_ra(self):
@@ -660,8 +663,7 @@ class GiaoDienQuanLyBaiXe:
         self.nut_oto_ra.config(bg="#10b981", relief=tk.SUNKEN)
         self.nhan_che_do.config(text="Chế độ: XE HƠI RA")
         self.xoa_thong_tin()
-        self.dau_doc_the.dang_quet = False  # RESET trạng thái quét thẻ!
-        self.quan_ly_xe.dat_che_do("ra", "oto")
+        self.dau_doc_the.dang_quet = False
         self.quan_ly_camera.chuyen_doi_camera("ra")
     
     def kiem_tra_bien_so(self):
@@ -690,9 +692,31 @@ class GiaoDienQuanLyBaiXe:
         self.khung_hien_thi_anh_gan_day.config(image=self.anh_chup_gan_day)
     
     def cap_nhat_anh_xac_nhan_ra(self, anh):
-        """Cập nhật khung hình xác nhận xe ra"""
-        self.anh_xac_nhan_ra = ImageTk.PhotoImage(anh)
-        self.khung_hien_thi_xac_nhan_ra.config(image=self.anh_xac_nhan_ra)
+        """Cập nhật khung hình xác nhận xe ra - CHỈ KHI KHÔNG HIỂN THỊ ẢNH XE VÀO"""
+        try:
+            # Kiểm tra xem có đang hiển thị ảnh xe vào không
+            if hasattr(self, 'photo_xe_vao') and self.photo_xe_vao:
+                # Đang hiển thị ảnh xe vào, không ghi đè
+                return
+                
+            import cv2
+            
+            # Hiển thị ảnh camera bình thường
+            if hasattr(anh, 'resize'):
+                # Nếu anh là PIL Image
+                self.anh_xac_nhan_ra = ImageTk.PhotoImage(anh)
+            else:
+                # Nếu anh là array từ cv2
+                anh_pil = Image.fromarray(cv2.cvtColor(anh, cv2.COLOR_BGR2RGB))
+                self.anh_xac_nhan_ra = ImageTk.PhotoImage(anh_pil)
+            
+            self.khung_hien_thi_xac_nhan_ra.config(image=self.anh_xac_nhan_ra)
+            
+        except Exception as e:
+            print(f"Lỗi cập nhật ảnh xác nhận ra: {e}")
+            """Cập nhật khung hình xác nhận xe ra"""
+            self.anh_xac_nhan_ra = ImageTk.PhotoImage(anh)
+            self.khung_hien_thi_xac_nhan_ra.config(image=self.anh_xac_nhan_ra)
 
     def cap_nhat_trang_thai_xe_ra(self, ma_the, bien_so, thanh_cong, msg=""):
         from tkinter import messagebox
@@ -711,6 +735,24 @@ class GiaoDienQuanLyBaiXe:
                 messagebox.showerror("Lỗi xe ra", f"Thẻ: {ma_the}\n{msg}")
             else:
                 messagebox.showerror("Lỗi xe ra", f"Thẻ: {ma_the}\nLỗi không xác định")
+
+    def cap_nhat_trang_thai_xe_vao(self, ma_the, bien_so, thanh_cong, msg=""):
+        from tkinter import messagebox
+        if thanh_cong:
+            # Trạng thái thành công
+            self.cap_nhat_trang_thai_dau_doc(
+                f"Xe vào thành công - Thẻ: {ma_the} - Biển số: {bien_so}", "#2ecc71"
+            )
+        else:
+            # Trạng thái thất bại
+            self.cap_nhat_trang_thai_dau_doc(
+                f"Lỗi xe vào [{ma_the}]: {msg}", "#e74c3c"
+            )
+                # Hiển thị popup lỗi cho người dùng
+            if msg:
+                messagebox.showerror("Lỗi xe vào", f"Thẻ: {ma_the}\n{msg}")
+            else:
+                messagebox.showerror("Lỗi xe vào", f"Thẻ: {ma_the}\nLỗi không xác định")
 
     def cap_nhat_trang_thai_dau_doc(self, trang_thai, mau="#3498db"):
         """Cập nhật trạng thái đầu đọc thẻ"""
@@ -1000,3 +1042,166 @@ class GiaoDienQuanLyBaiXe:
             )
         else:
             self.khung_hien_thi_camera_ra.master.config(text="Camera Ra (...)")
+    
+    def hien_thi_anh_xe_vao_trong_xac_nhan_ra(self, anh_vao_url, bien_so_vao, ma_the):
+        """Hiển thị chỉ ảnh xe vào trong khung Xác nhận xe ra"""
+        try:
+            # Load ảnh từ URL database
+            anh_vao_pil = self.load_anh_tu_url(anh_vao_url)
+            
+            if anh_vao_pil:
+                # Resize ảnh để phù hợp với khung hiện có
+                anh_resize = anh_vao_pil.resize((320, 240), Image.Resampling.LANCZOS)
+                self.photo_xe_vao = ImageTk.PhotoImage(anh_resize)
+                
+                # Hiển thị trực tiếp trong label hiện có
+                self.khung_hien_thi_xac_nhan_ra.config(image=self.photo_xe_vao)
+                self.khung_hien_thi_xac_nhan_ra.image = self.photo_xe_vao
+                
+                # Cập nhật title của khung
+                parent_frame = self.khung_hien_thi_xac_nhan_ra.master
+                if hasattr(parent_frame, 'config'):
+                    parent_frame.config(text=f"Xe VÀO - Mã thẻ: {ma_the} - Biển số: {bien_so_vao}")
+                
+                print(f"Đã hiển thị ảnh xe vào cho thẻ {ma_the}")
+                
+            else:
+                print(f"Không thể load ảnh từ URL: {anh_vao_url}")
+                self.hien_thi_placeholder_anh_xe_vao_don_gian(bien_so_vao, ma_the)
+                
+        except Exception as e:
+            print(f"Lỗi hiển thị ảnh xe vào: {e}")
+            self.hien_thi_placeholder_anh_xe_vao_don_gian(bien_so_vao, ma_the)
+
+    def hien_thi_placeholder_anh_xe_vao_don_gian(self, bien_so_vao, ma_the):
+        """Hiển thị placeholder đơn giản khi không load được ảnh xe vào"""
+        try:
+            # Tạo ảnh text thay thế
+            anh_placeholder = Image.new('RGB', (320, 240), color='#ffebee')
+            
+            # Thêm text lên ảnh (nếu có thư viện PIL.ImageDraw)
+            try:
+                from PIL import ImageDraw, ImageFont
+                draw = ImageDraw.Draw(anh_placeholder)
+                
+                # Text thông tin
+                text_lines = [
+                    "Không thể tải ảnh xe vào",
+                    f"Mã thẻ: {ma_the}",
+                    f"Biển số: {bien_so_vao}"
+                ]
+                
+                # Vẽ text
+                y_offset = 80
+                for line in text_lines:
+                    bbox = draw.textbbox((0, 0), line)
+                    text_width = bbox[2] - bbox[0]
+                    x = (320 - text_width) // 2
+                    draw.text((x, y_offset), line, fill='#c62828')
+                    y_offset += 25
+                    
+            except ImportError:
+                # Nếu không có ImageDraw, chỉ dùng màu nền
+                pass
+            
+            # Hiển thị ảnh placeholder
+            self.photo_xe_vao = ImageTk.PhotoImage(anh_placeholder)
+            self.khung_hien_thi_xac_nhan_ra.config(image=self.photo_xe_vao)
+            self.khung_hien_thi_xac_nhan_ra.image = self.photo_xe_vao
+            
+            # Cập nhật title
+            parent_frame = self.khung_hien_thi_xac_nhan_ra.master
+            if hasattr(parent_frame, 'config'):
+                parent_frame.config(text=f"Xe VÀO - Mã thẻ: {ma_the} - Biển số: {bien_so_vao}")
+                
+        except Exception as e:
+            print(f"Lỗi hiển thị placeholder: {e}")
+
+    def khoi_phuc_khung_xac_nhan_ra_ban_dau(self):
+        """Khôi phục khung xác nhận xe ra về trạng thái ban đầu"""
+        try:
+            # Tạo ảnh trống
+            anh_trong = Image.new('RGB', (320, 240), color='#333333')
+            self.anh_xac_nhan_ra = ImageTk.PhotoImage(anh_trong)
+            self.khung_hien_thi_xac_nhan_ra.config(image=self.anh_xac_nhan_ra)
+            
+            # Khôi phục title gốc
+            parent_frame = self.khung_hien_thi_xac_nhan_ra.master
+            if hasattr(parent_frame, 'config'):
+                parent_frame.config(text="Xác Nhận Xe Ra")
+                
+        except Exception as e:
+            print(f"Lỗi khôi phục khung: {e}")
+            """Ẩn thông tin xe vào khi không cần thiết"""
+            if hasattr(self, 'frame_anh_container'):
+                # Reset về trạng thái ban đầu
+                try:
+                    self.frame_anh_container.pack_forget()
+                    
+                    # Khôi phục label gốc
+                    anh_trong = Image.new('RGB', (320, 240), color='#333333')
+                    self.anh_xac_nhan_ra = ImageTk.PhotoImage(anh_trong)
+                    self.khung_hien_thi_xac_nhan_ra.config(image=self.anh_xac_nhan_ra)
+                    
+                except Exception as e:
+                    print(f"Lỗi ẩn thông tin xe vào: {e}")
+        
+    def load_anh_tu_url(self, url_path):
+        """Load ảnh từ URL database"""
+        try:
+            import os
+            
+            if not url_path:
+                return None
+            
+            print(f"🔍 DEBUG: Đường dẫn ảnh nhận được: '{url_path}'")
+            
+            # Convert URL "server/images\file.jpg" thành đường dẫn thực tế
+            if url_path.startswith("server/"):
+                # Chuẩn hóa đường dẫn - thay thế cả \ và /
+                local_path = url_path.replace("\\", "/").replace("//", "/")
+                
+                # Tạo full path
+                current_dir = os.getcwd()
+                full_path = os.path.join(current_dir, local_path)
+                full_path = os.path.normpath(full_path)
+                
+                print(f"🔍 DEBUG: Đường dẫn đầy đủ: '{full_path}'")
+                
+                # Kiểm tra file tồn tại
+                if os.path.exists(full_path):
+                    print(f"✅ File tồn tại, đang load ảnh...")
+                    image = Image.open(full_path)
+                    print(f"✅ Load ảnh thành công, kích thước: {image.size}")
+                    return image
+                else:
+                    print(f"❌ File không tồn tại: {full_path}")
+                    # Thử tìm trong thư mục gốc
+                    filename = os.path.basename(url_path)
+                    alt_path = os.path.join(current_dir, "server", "images", filename)
+                    print(f"🔍 Thử đường dẫn thay thế: {alt_path}")
+                    
+                    if os.path.exists(alt_path):
+                        print(f"✅ Tìm thấy file tại đường dẫn thay thế")
+                        image = Image.open(alt_path)
+                        return image
+                    else:
+                        print(f"❌ Không tìm thấy file ở đường dẫn thay thế")
+                        return None
+            else:
+                # Đường dẫn tuyệt đối
+                print(f"🔍 Đường dẫn tuyệt đối: {url_path}")
+                if os.path.exists(url_path):
+                    image = Image.open(url_path)
+                    return image
+                else:
+                    print(f"❌ Đường dẫn tuyệt đối không tồn tại")
+                    return None
+                    
+        except Exception as e:
+            print(f"❌ Lỗi load ảnh từ URL {url_path}: {e}")
+            import traceback
+            traceback.print_exc()
+            return None
+        
+        return None

@@ -132,3 +132,15 @@ def loadPhienGuiXeTheoMaThe(ma_the: str) -> models.PhienGuiXe:
     res.raise_for_status()
     raw_data = res.json()
     return [models.PhienGuiXe(**item) for item in raw_data] if raw_data else None
+
+def loadPhienGuiXeTheoMaThe_XeRa(ma_the: str) -> models.PhienGuiXe:
+    api = url.url_api
+    payload = {
+        "table": "pm_nc0009",
+        "func": "layPhienGuiXeTuUID_Da_Ra",
+        "uidThe": ma_the
+    }
+    res = requests.post(api, json=payload)
+    res.raise_for_status()
+    raw_data = res.json()
+    return [models.PhienGuiXe(**item) for item in raw_data] if raw_data else None
