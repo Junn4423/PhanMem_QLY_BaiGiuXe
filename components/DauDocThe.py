@@ -65,11 +65,23 @@ class DauDocThe:
                     cong_vao_str = khu['congVao'][0]['maCong'] if khu.get('congVao') and len(khu['congVao']) > 0 else "N/A"
                     camera_id = khu['cameraVao'][0]['maCamera'] if khu.get('cameraVao') and len(khu['cameraVao']) > 0 else "N/A"
                     khung_hinh_chup, bien_so = self.quan_ly_camera.chup_anh(ma_the, che_do="vao")
+                    print(f"Ảnh xe vào: {khung_hinh_chup}, Biển số: {bien_so}")  # Debug
+                    # Cập nhật biển số xe vào khung biển số
+                    if bien_so and self.ui:
+                        self.ui.khung_hien_thi_bien_so.config(text=bien_so.upper())
+                    if not khung_hinh_chup:
+                        print("Lỗi: Không chụp được ảnh xe vào")
                     self.quan_ly_xe.xu_ly_xe_vao(ma_the, khung_hinh_chup, bien_so, None, cong_vao_str, camera_id)
                 else:
                     cong_ra_str = khu['congRa'][0]['maCong'] if khu.get('congRa') and len(khu['congRa']) > 0 else "N/A"
                     camera_id = khu['cameraRa'][0]['maCamera'] if khu.get('cameraRa') and len(khu['cameraRa']) > 0 else "N/A"
                     anh_ra_path, bien_so_ra = self.quan_ly_camera.chup_anh(ma_the, che_do="ra")
+                    print(f"Ảnh xe ra: {anh_ra_path}, Biển số: {bien_so_ra}")  # Debug
+                    # Cập nhật biển số xe vào khung biển số
+                    if bien_so_ra and self.ui:
+                        self.ui.khung_hien_thi_bien_so.config(text=bien_so_ra.upper())
+                    if not anh_ra_path:
+                        print("Lỗi: Không chụp được ảnh xe ra")
                     plate_match = 1
                     res = self.quan_ly_xe.xu_ly_xe_ra(
                         ma_the,

@@ -52,7 +52,10 @@ class QuanLyXe:
                 }
                 # Cập nhật thông tin xe lên UI
                 self.ui.cap_nhat_thong_tin_xe(du_lieu_xe_vao)
-        
+        else:
+            error_msg = success.get('message', 'Unknown error')
+            print(f"Lỗi: {error_msg}")
+
         if self.ui:
             self.ui.cap_nhat_trang_thai_xe_vao(ma_the, bien_so, success)
         return success

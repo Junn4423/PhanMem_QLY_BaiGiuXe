@@ -100,30 +100,46 @@ class QuanLyCamera:
         duong_dan = None
         bien_so = None
         if khung_hinh_cuoi is not None:
+            print(f"Đã lấy được khung hình từ camera ({che_do})")  # Debug
             self.anh_da_chup = khung_hinh_cuoi.copy()
             if ma_the:
                 ten_file = f"{ma_the}_{int(time.time())}.jpg"
                 duong_dan = os.path.join("server/images", ten_file)
                 cv2.imwrite(duong_dan, self.anh_da_chup)
-                if self.api_bien_so:
-                    try:
-                        with open(duong_dan, "rb") as file_anh:
-                            files = {"file": file_anh}
-                            response = requests.post(self.api_bien_so, files=files, timeout=10)
-                            if response.status_code == 200:
-                                ket_qua = response.json()
-                                if ket_qua.get("ket_qua"):
-                                    chuoi_ocr = ket_qua["ket_qua"][0].get("ocr", "")
-                                    match = re.search(r"text='(.*?)'", chuoi_ocr)
-                                    if match:
-                                        bien_so = match.group(1)
-                    except Exception as e:
-                        print("Lỗi khi gửi ảnh lên API biển số:", e)
-            img = self._frame_to_img(self.anh_da_chup)
-            if self.ui:
-                self.ui.cap_nhat_anh_gan_day(img)
+                print(f"Đã lưu ảnh tại: {duong_dan}")  # Debug
+                if not os.path.exists(duong_dan):
+                    print(f"Lỗi: Không thể lưu ảnh tại {duong_dan}")
+                    duong_dan = None  # Đặt lại duong_dan nếu lưu thất bại
+                else:
+                    # Gọi API nhận diện biển số nếu có
+                    if self.api_bien_so:
+                        try:
+                            with open(duong_dan, "rb") as file_anh:
+                                files = {"file": file_anh}
+                                response = requests.post(self.api_bien_so, files=files, timeout=10)
+                                if response.status_code == 200:
+                                    ket_qua = response.json()
+                                    if ket_qua.get("ket_qua"):
+                                        chuoi_ocr = ket_qua["ket_qua"][0].get("ocr", "")
+                                        match = re.search(r"text='(.*?)'", chuoi_ocr)
+                                        if match:
+                                            bien_so = match.group(1)
+                                            print(f"Nhận diện biển số thành công: {bien_so}")
+                        except Exception as e:
+                            print("Lỗi khi gửi ảnh lên API biển số:", e)
+            else:
+                print("Lỗi: Không có mã thẻ để lưu ảnh")
+            
+            # Cập nhật ảnh vừa chụp lên giao diện (truyền đường dẫn thay vì img)
+            if self.ui and duong_dan:
+                self.ui.cap_nhat_anh_gan_day(duong_dan)
+            else:
+                print("Không thể cập nhật ảnh vừa chụp: Không có đường dẫn hoặc UI không tồn tại")
+            
             return duong_dan, bien_so
-        return None, None
+        else:
+            print(f"Lỗi: Không có khung hình từ camera ({che_do})")
+            return None, None
 
     def _frame_to_img(self, frame):
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)

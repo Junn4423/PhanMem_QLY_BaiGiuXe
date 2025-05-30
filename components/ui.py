@@ -1,3 +1,4 @@
+import os
 import tkinter as tk
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
@@ -93,12 +94,12 @@ class GiaoDienQuanLyBaiXe:
         khung_noi_dung.pack(fill=tk.BOTH, expand=True)
 
         # Left panel - THIẾT LẬP CHIỀU RỘNG CỐ ĐỊNH
-        bang_trai = tk.Frame(khung_noi_dung, bg="#f0f9ff", width=800)  # Tăng width từ 700 lên 800
+        bang_trai = tk.Frame(khung_noi_dung, bg="#f0f9ff", width=800)
         bang_trai.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 10))
         bang_trai.pack_propagate(False)  # QUAN TRỌNG: Ngăn thay đổi kích thước
 
         # Camera frames - THIẾT LẬP CHIỀU CAO CỐ ĐỊNH
-        khung_cameras = tk.Frame(bang_trai, bg="#f0f9ff", height=300)  # Tăng height từ 250 lên 300
+        khung_cameras = tk.Frame(bang_trai, bg="#f0f9ff", height=300)
         khung_cameras.pack(fill=tk.X, pady=(0, 10))
         khung_cameras.pack_propagate(False)  # QUAN TRỌNG
 
@@ -106,15 +107,15 @@ class GiaoDienQuanLyBaiXe:
         khung_camera_vao = tk.LabelFrame(
             khung_cameras, text="Camera Vào (...)", font=("Helvetica", 12, "bold"),
             bg="#f0f9ff", fg="#0369a1", padx=5, pady=5, relief=tk.GROOVE, bd=2,
-            width=450, height=330  # Tăng từ 400x280 lên 450x330
+            width=450, height=330
         )
         khung_camera_vao.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 5))
         khung_camera_vao.pack_propagate(False)  # QUAN TRỌNG
         
-        self.khung_hien_thi_camera_vao = tk.Label(khung_camera_vao, bg="black", width=430, height=310)  # Tăng từ 380x260 lên 430x310
+        self.khung_hien_thi_camera_vao = tk.Label(khung_camera_vao, bg="black", width=450, height=330)
         self.khung_hien_thi_camera_vao.pack(fill=tk.BOTH, expand=True, padx=0, pady=0)
         
-        anh_camera_vao = Image.new('RGB', (430, 310), color='#333333')  # Tăng từ 380x260 lên 430x310
+        anh_camera_vao = Image.new('RGB', (450, 330), color='#333333')
         self.anh_camera_vao = ImageTk.PhotoImage(anh_camera_vao)
         self.khung_hien_thi_camera_vao.config(image=self.anh_camera_vao)
         
@@ -127,15 +128,15 @@ class GiaoDienQuanLyBaiXe:
         khung_camera_ra = tk.LabelFrame(
             khung_cameras, text="Camera Ra (...)", font=("Helvetica", 12, "bold"),
             bg="#f0f9ff", fg="#0369a1", padx=5, pady=5, relief=tk.GROOVE, bd=2,
-            width=450, height=330  # Tăng từ 400x280 lên 450x330
+            width=450, height=330
         )
         khung_camera_ra.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=(5, 0))
         khung_camera_ra.pack_propagate(False)  # QUAN TRỌNG
         
-        self.khung_hien_thi_camera_ra = tk.Label(khung_camera_ra, bg="black", width=430, height=310)  # Tăng từ 380x260 lên 430x310
+        self.khung_hien_thi_camera_ra = tk.Label(khung_camera_ra, bg="black", width=450, height=330)
         self.khung_hien_thi_camera_ra.pack(fill=tk.BOTH, expand=True, padx=0, pady=0)
         
-        anh_camera_ra = Image.new('RGB', (430, 310), color='#333333')  # Tăng từ 380x260 lên 430x310
+        anh_camera_ra = Image.new('RGB', (450, 330), color='#333333')
         self.anh_camera_ra = ImageTk.PhotoImage(anh_camera_ra)
         self.khung_hien_thi_camera_ra.config(image=self.anh_camera_ra)
         
@@ -145,7 +146,7 @@ class GiaoDienQuanLyBaiXe:
         self.nhan_cong_ra.pack(pady=(5, 0))
         
         # Captures frame - THIẾT LẬP CHIỀU CAO CỐ ĐỊNH
-        khung_anh_chup = tk.Frame(bang_trai, bg="#f0f9ff", height=250)
+        khung_anh_chup = tk.Frame(bang_trai, bg="#f0f9ff", height=330)  # Tăng từ 250 lên 330
         khung_anh_chup.pack(fill=tk.X, pady=(0, 10))
         khung_anh_chup.pack_propagate(False)  # QUAN TRỌNG
 
@@ -160,17 +161,18 @@ class GiaoDienQuanLyBaiXe:
             pady=5, 
             relief=tk.GROOVE,
             bd=2,
-            width=400, height=280  # Kích thước cố định
+            width=450, height=330  # Tăng từ 400x330 lên 450x330
         )
         khung_anh_gan_day.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 5))
         khung_anh_gan_day.pack_propagate(False)  # QUAN TRỌNG
         
-        self.khung_hien_thi_anh_gan_day = tk.Label(khung_anh_gan_day, bg="black", width=320, height=240)
+        self.khung_hien_thi_anh_gan_day = tk.Label(khung_anh_gan_day, bg="black", width=450, height=330)  # Tăng từ 400x330 lên 450x330
         self.khung_hien_thi_anh_gan_day.pack(fill=tk.BOTH, expand=True, padx=0, pady=0)
 
-        anh_trong = Image.new('RGB', (320, 240), color='#333333')
+        anh_trong = Image.new('RGB', (450, 330), color='#333333')  # Tăng từ 400x330 lên 450x330
         self.anh_chup_gan_day = ImageTk.PhotoImage(anh_trong)
         self.khung_hien_thi_anh_gan_day.config(image=self.anh_chup_gan_day)
+
         # Exit verify frame - THIẾT LẬP KÍCH THƯỚC CỐ ĐỊNH
         khung_xac_nhan_ra = tk.LabelFrame(
             khung_anh_chup, 
@@ -182,12 +184,12 @@ class GiaoDienQuanLyBaiXe:
             pady=5, 
             relief=tk.GROOVE,
             bd=2,
-            width=400, height=280  # Kích thước cố định
+            width=450, height=330  # Tăng từ 400x330 lên 450x330
         )
         khung_xac_nhan_ra.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=(5, 0))
         khung_xac_nhan_ra.pack_propagate(False)  # QUAN TRỌNG
         
-        self.khung_hien_thi_xac_nhan_ra = tk.Label(khung_xac_nhan_ra, bg="black", width=380, height=260)
+        self.khung_hien_thi_xac_nhan_ra = tk.Label(khung_xac_nhan_ra, bg="black", width=450, height=330)  # Tăng từ 400x330 lên 450x330
         self.khung_hien_thi_xac_nhan_ra.pack(fill=tk.BOTH, expand=True, padx=0, pady=0)
         
         self.anh_xac_nhan_ra = ImageTk.PhotoImage(anh_trong)
@@ -212,11 +214,11 @@ class GiaoDienQuanLyBaiXe:
         self.khung_hien_thi_bien_so = tk.Label(
             khung_bien_so, 
             text="", 
-            font=("Helvetica", 16, "bold"),  # Tăng kích thước chữ để dễ đọc
+            font=("Helvetica", 16, "bold"), 
             bg="white", 
-            fg="#0369a1",  # Màu chữ xanh đậm
+            fg="#0369a1",
             height=5,
-            anchor="center"  # Căn giữa văn bản
+            anchor="center"
         )
         self.khung_hien_thi_bien_so.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
         
@@ -686,37 +688,39 @@ class GiaoDienQuanLyBaiXe:
         self.anh_camera_ra = ImageTk.PhotoImage(anh)
         self.khung_hien_thi_camera_ra.config(image=self.anh_camera_ra)
     
-    def cap_nhat_anh_gan_day(self, anh):
-        """Cập nhật khung hình chụp gần đây"""
-        self.anh_chup_gan_day = ImageTk.PhotoImage(anh)
-        self.khung_hien_thi_anh_gan_day.config(image=self.anh_chup_gan_day)
-    
-    def cap_nhat_anh_xac_nhan_ra(self, anh):
-        """Cập nhật khung hình xác nhận xe ra - CHỈ KHI KHÔNG HIỂN THỊ ẢNH XE VÀO"""
+    def cap_nhat_anh_gan_day(self, duong_dan_anh):
         try:
-            # Kiểm tra xem có đang hiển thị ảnh xe vào không
-            if hasattr(self, 'photo_xe_vao') and self.photo_xe_vao:
-                # Đang hiển thị ảnh xe vào, không ghi đè
+            print(f"Đường dẫn ảnh gần đây: {duong_dan_anh}")  # Debug
+            if not duong_dan_anh:
+                print("Lỗi: Đường dẫn ảnh gần đây là None")
                 return
-                
-            import cv2
-            
-            # Hiển thị ảnh camera bình thường
-            if hasattr(anh, 'resize'):
-                # Nếu anh là PIL Image
-                self.anh_xac_nhan_ra = ImageTk.PhotoImage(anh)
-            else:
-                # Nếu anh là array từ cv2
-                anh_pil = Image.fromarray(cv2.cvtColor(anh, cv2.COLOR_BGR2RGB))
-                self.anh_xac_nhan_ra = ImageTk.PhotoImage(anh_pil)
-            
-            self.khung_hien_thi_xac_nhan_ra.config(image=self.anh_xac_nhan_ra)
-            
+            if not os.path.exists(duong_dan_anh):
+                print(f"Lỗi: File ảnh không tồn tại tại {duong_dan_anh}")
+                return
+            img = Image.open(duong_dan_anh)
+            img = img.resize((450, 330), Image.Resampling.LANCZOS)
+            self.anh_chup_gan_day = ImageTk.PhotoImage(img)
+            self.khung_hien_thi_anh_gan_day.config(image=self.anh_chup_gan_day)
+            print("Đã cập nhật ảnh gần đây thành công")
         except Exception as e:
-            print(f"Lỗi cập nhật ảnh xác nhận ra: {e}")
-            """Cập nhật khung hình xác nhận xe ra"""
-            self.anh_xac_nhan_ra = ImageTk.PhotoImage(anh)
+            print(f"Lỗi khi cập nhật ảnh gần đây: {e}")
+
+    def cap_nhat_anh_xac_nhan_ra(self, duong_dan_anh):
+        try:
+            print(f"Đường dẫn ảnh xác nhận ra: {duong_dan_anh}")  # Debug
+            if not duong_dan_anh:
+                print("Lỗi: Đường dẫn ảnh xác nhận ra là None")
+                return
+            if not os.path.exists(duong_dan_anh):
+                print(f"Lỗi: File ảnh không tồn tại tại {duong_dan_anh}")
+                return
+            img = Image.open(duong_dan_anh)
+            img = img.resize((450, 330), Image.Resampling.LANCZOS)
+            self.anh_xac_nhan_ra = ImageTk.PhotoImage(img)
             self.khung_hien_thi_xac_nhan_ra.config(image=self.anh_xac_nhan_ra)
+            print("Đã cập nhật ảnh xác nhận ra thành công")
+        except Exception as e:
+            print(f"Lỗi khi cập nhật ảnh xác nhận ra: {e}")
 
     def cap_nhat_trang_thai_xe_ra(self, ma_the, bien_so, thanh_cong, msg=""):
         from tkinter import messagebox
@@ -953,12 +957,11 @@ class GiaoDienQuanLyBaiXe:
         self.nhan_cong_ra_info.config(text="")
         self.nhan_chinh_sach.config(text="")
         
-        # Xóa hình ảnh
-        anh_bien_so = Image.new('RGB', (300, 100), color='white')
-        self.anh_bien_so = ImageTk.PhotoImage(anh_bien_so)
-        self.khung_hien_thi_bien_so.config(image=self.anh_bien_so)
+        # Xóa văn bản biển số
+        self.khung_hien_thi_bien_so.config(text="")
         
-        anh_trong = Image.new('RGB', (320, 240), color='#333333')
+        # Xóa hình ảnh
+        anh_trong = Image.new('RGB', (450, 330), color='#333333')  # Tăng từ 320x240 lên 450x330
         self.anh_chup_gan_day = ImageTk.PhotoImage(anh_trong)
         self.khung_hien_thi_anh_gan_day.config(image=self.anh_chup_gan_day)
         
@@ -967,7 +970,6 @@ class GiaoDienQuanLyBaiXe:
         
         # Đặt lại trạng thái đầu đọc thẻ
         self.trang_thai_dau_doc.config(text="Đang chờ quẹt thẻ...", fg="#0369a1")
-    
     def khi_chon_xe(self, event):
         """Xử lý chọn xe từ danh sách"""
         selected_items = self.bang_danh_sach_xe.selection()
@@ -1051,7 +1053,7 @@ class GiaoDienQuanLyBaiXe:
             
             if anh_vao_pil:
                 # Resize ảnh để phù hợp với khung hiện có
-                anh_resize = anh_vao_pil.resize((320, 240), Image.Resampling.LANCZOS)
+                anh_resize = anh_vao_pil.resize((360, 260), Image.Resampling.LANCZOS)
                 self.photo_xe_vao = ImageTk.PhotoImage(anh_resize)
                 
                 # Hiển thị trực tiếp trong label hiện có
@@ -1077,7 +1079,7 @@ class GiaoDienQuanLyBaiXe:
         """Hiển thị placeholder đơn giản khi không load được ảnh xe vào"""
         try:
             # Tạo ảnh text thay thế
-            anh_placeholder = Image.new('RGB', (320, 240), color='#ffebee')
+            anh_placeholder = Image.new('RGB', (360, 280), color='#ffebee')
             
             # Thêm text lên ảnh (nếu có thư viện PIL.ImageDraw)
             try:
@@ -1121,7 +1123,7 @@ class GiaoDienQuanLyBaiXe:
         """Khôi phục khung xác nhận xe ra về trạng thái ban đầu"""
         try:
             # Tạo ảnh trống
-            anh_trong = Image.new('RGB', (320, 240), color='#333333')
+            anh_trong = Image.new('RGB', (360, 280), color='#333333')
             self.anh_xac_nhan_ra = ImageTk.PhotoImage(anh_trong)
             self.khung_hien_thi_xac_nhan_ra.config(image=self.anh_xac_nhan_ra)
             
@@ -1139,7 +1141,7 @@ class GiaoDienQuanLyBaiXe:
                     self.frame_anh_container.pack_forget()
                     
                     # Khôi phục label gốc
-                    anh_trong = Image.new('RGB', (320, 240), color='#333333')
+                    anh_trong = Image.new('RGB', (380, 260), color='#333333')
                     self.anh_xac_nhan_ra = ImageTk.PhotoImage(anh_trong)
                     self.khung_hien_thi_xac_nhan_ra.config(image=self.anh_xac_nhan_ra)
                     
